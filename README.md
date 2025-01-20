@@ -39,7 +39,7 @@ JWT_SECRET_KEY=your_jwt_secret_key
 
 #### Create the Database with Docker
 
-Make sure that you have Docker installed
+Make sure that you have [Docker](https://www.docker.com/products/docker-desktop/) and [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/) installed before to run these commands inside the root of this project directory:
 
 ```bash
 $ yarn run docker:build
