@@ -16,6 +16,8 @@ This document describes the available endpoints and their functionality.
 
 ### 1. Define the Environment Variables
 
+In order to define the Environment Variables please create a new empty file in the root of the project, than copy and paste these variables and then change your password and values with your real secrets:
+
 ```.env
 PORT=3012
 DB_URL=mongodb://your_mongodb_user:your_mongodb_password@
@@ -61,6 +63,8 @@ DELETE `/products/:sku`
 POST `/reports/download`
 
 ## Endpoints
+
+You can Download and Import the [Postman Collection](https://github.com/LeoCR/nest-mongo-products-api/blob/main/Products-API-postman-collection.json) in order to execute all the endpoints
 
 ### 1. **Get Products**
 
