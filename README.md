@@ -166,7 +166,7 @@ To download the report you can do it from terminal executing the next Curl Reque
 
 ### Curl Request
 
-`curl -X POST "http://localhost:3012/reports/download?whithPrice=true&startDate=2024-01-01&endDate=2025-01-01" -H "Authorization: Bearer your_access_token_here" -H "Accept: application/vnd.ms-excel" -o report-products.xlsx`
+`curl -X POST "http://localhost:3012/reports/download?whithPrice=true&startDate=2024-01-01&endDate=2025-01-01&withPrice=false" -H "Authorization: Bearer your_access_token_here" -H "Accept: application/vnd.ms-excel" -o report-products.xlsx`
 
 ## Compile and run the project
 
