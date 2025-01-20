@@ -15,7 +15,7 @@ export class ProductEntriesService {
     private readonly productService: ProductService,
   ) {}
 
-  @Cron('*/2 * * * *')
+  @Cron('0 * * * *')
   async insertProducts() {
     console.log('Running the Cron Job for Contentful');
     this.logger.debug('Called when the current second is 45');
