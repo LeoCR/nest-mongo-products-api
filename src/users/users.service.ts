@@ -14,25 +14,36 @@ export class UsersService {
     email: string,
     username: string,
     password: string,
-  ): Promise<User> {
-    const existingUser = await this.userModel.findOne({ email });
-    if (existingUser) {
-      throw new ConflictException('Email already exists');
-    }
+  ): Promise<User | { message: string }> {
+    try {
+      const existingUser = await this.userModel.findOne({ email });
+      if (existingUser) {
+        throw new ConflictException('Email already exists');
+      }
 
-    const newUser = (
-      await this.userModel.create({ email, username, password })
-    ).save(); // Usamos create() en lugar de new
-    return newUser;
+      const newUser = (
+        await this.userModel.create({ email, username, password })
+      ).save(); // Usamos create() en lugar de new
+      return newUser;
+    } catch (error: any) {
+      return {
+        message: error.message ? error.message : 'Unknown error',
+      };
+    }
   }
 
   async validateUser(email: string, plainPassword: string): Promise<boolean> {
-    const user = await this.userModel.findOne({ email });
-    if (!user) {
+    try {
+      const user = await this.userModel.findOne({ email });
+      if (!user) {
+        return false;
+      }
+
+      return comparePasswords(plainPassword, user.password);
+    } catch (error) {
+      console.error('validateUser Error: ', error);
       return false;
     }
-
-    return comparePasswords(plainPassword, user.password);
   }
 
   async findOne(email: string) {

@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from './users.service';
 import { getModelToken } from '@nestjs/mongoose';
-import { ConflictException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { User } from './user.schema';
 import { comparePasswords } from '@app/auth/auth.util';
@@ -69,7 +68,7 @@ describe('UsersService', () => {
 
       await expect(
         service.createUser('test@example.com', 'TestUser', 'password123'),
-      ).rejects.toThrow(ConflictException);
+      ).resolves.toEqual({ message: 'Email already exists' });
       expect(mockUserModel.findOne).toHaveBeenCalledWith({
         email: 'test@example.com',
       });

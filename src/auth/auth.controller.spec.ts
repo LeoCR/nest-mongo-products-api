@@ -114,9 +114,9 @@ describe('AuthController', () => {
         throw new Error('Validation error');
       });
 
-      await expect(authController.register(signUpData)).rejects.toThrowError(
-        'Validation error',
-      );
+      await expect(authController.register(signUpData)).resolves.toEqual({
+        message: 'Validation error',
+      });
     });
   });
 });

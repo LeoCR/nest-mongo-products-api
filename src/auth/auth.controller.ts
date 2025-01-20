@@ -74,6 +74,12 @@ export class AuthController {
   @ApiResponse({ status: 400, description: 'Bad request or validation error' })
   @Post('sign-up')
   async register(@Body() { email, password, username }: SignUpDtao) {
-    return this.userService.createUser(email, username, password);
+    try {
+      return this.userService.createUser(email, username, password);
+    } catch (error: any) {
+      return {
+        message: error?.message ? error.message : 'Unknow Error.',
+      };
+    }
   }
 }
