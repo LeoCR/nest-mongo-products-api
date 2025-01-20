@@ -1,0 +1,71 @@
+use('product_entries_db');
+
+// db.products.drop();
+
+db.createCollection('products', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: ['name', 'sku', 'sysId', 'stock', 'createdAt', 'updatedAt'],
+      properties: {
+        name: {
+          bsonType: 'string',
+          description: 'The description of the product',
+        },
+        brand: {
+          bsonType: 'string',
+          description: 'The brand of the product',
+        },
+        productModel: {
+          bsonType: 'string',
+          description: 'The Model of the product',
+        },
+        category: {
+          bsonType: 'string',
+          description: 'The Category of the product',
+        },
+        currency: {
+          bsonType: 'string',
+          description: 'The coin used for the product',
+        },
+        color: {
+          bsonType: 'string',
+          description: 'The Color of the Product',
+        },
+        sku: {
+          bsonType: 'string',
+          description: 'Stock keeping unit unique Identifier',
+        },
+        sysId: {
+          bsonType: 'string',
+          description: 'Contentful System ID',
+        },
+        price: {
+          bsonType: 'number',
+          description: 'Price of the product',
+        },
+        stock: {
+          bsonType: 'number',
+          minimum: 0,
+          maximum: 99999999,
+          description: 'Quantity of products inside warehouse',
+        },
+        createdAt: {
+          bsonType: 'date',
+          description: 'Date of creation',
+        },
+        updatedAt: {
+          bsonType: 'date',
+          description: 'Date of last update',
+        },
+        isDeleted: {
+          bsonType: 'bool',
+          description: 'Indicates if the Product was deleted or not',
+        },
+      },
+    },
+  },
+});
+
+db.products.createIndex({ sku: 1 }, { unique: true });
+db.products.createIndex({ sysId: 1 }, { unique: true });

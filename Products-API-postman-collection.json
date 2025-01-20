@@ -1,0 +1,597 @@
+{
+	"info": {
+		"_postman_id": "677760bf-98ad-411c-ab5b-79b1b0aefe61",
+		"name": "Products Report API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18641868"
+	},
+	"item": [
+		{
+			"name": "POST - Auth Sign Up",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"your_username\",\r\n    \"email\":\"your_email@domain.com\",\r\n    \"password\":\"your_password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{HOST}}:{{PORT}}/auth/sign-up",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"auth",
+						"sign-up"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST - Auth Sign Up Response Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"your_username\",\r\n    \"email\":\"your_email@domain.com\",\r\n    \"password\":\"your_password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{HOST}}:{{PORT}}/auth/sign-up",
+							"protocol": "http",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"auth",
+								"sign-up"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "253"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"fd-K8007mGM1yIj2ijmxe+qnTaWaMw\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Jan 2025 19:52:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"your_email@domain.com\",\n    \"username\": \"your_username\",\n    \"password\": \"$2b$10$FRwxrHrKomqa16XKzSOEiOdq1FR/6N9zEo8aJdu3p7r6Hx7yscXSC\",\n    \"_id\": \"678ea96e93c37a13fbf21cb4\",\n    \"createdAt\": \"2025-01-20T19:52:14.416Z\",\n    \"updatedAt\": \"2025-01-20T19:52:14.416Z\",\n    \"__v\": 0\n}"
+				},
+				{
+					"name": "POST - Auth Sign Up Response Error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"your_username\",\r\n    \"email\":\"your_email@domain.com\",\r\n    \"password\":\"your_password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{HOST}}:{{PORT}}/auth/sign-up",
+							"protocol": "http",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"auth",
+								"sign-up"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-7AVGAoBkmZbRAufGWQaVlmZxt9Q\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Jan 2025 20:07:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Email already exists\",\n    \"error\": \"Conflict\",\n    \"statusCode\": 409\n}"
+				}
+			]
+		},
+		{
+			"name": "POST - Auth Sign In",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"your_email@domain.com\",\r\n    \"password\":\"your_password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{HOST}}:{{PORT}}/auth/sign-in",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"auth",
+						"sign-in"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "POST - Auth Sign In Response Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"your_email@domain.com\",\r\n    \"password\":\"your_password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{HOST}}:{{PORT}}/auth/sign-in",
+							"protocol": "http",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "268"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10c-tzqzUPOsmfJe/dwVEKc1GazJ8fo\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Jan 2025 19:53:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OGVhOTZlOTNjMzdhMTNmYmYyMWNiNCIsInVzZXJuYW1lIjoieW91cl91c2VybmFtZSIsImVtYWlsIjoieW91cl9lbWFpbEBkb21haW4uY29tIiwiaWF0IjoxNzM3NDAyODA1LCJleHAiOjE3NDI1ODY4MDV9.Qc6f8n709WHhRbOuTMPzop5Vqy53MTzOiqTu_l0IoKU\"\n}"
+				}
+			]
+		},
+		{
+			"name": "GET - Fetch Products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"sysId\": \"1wmXOAxCQXabOEJs0726L9\",\r\n        \"createdAt\": \"2024-01-23T21:44:52.049Z\",\r\n        \"updatedAt\": \"2024-01-23T21:44:52.049Z\",\r\n        \"sku\": \"TG31HUXY\",\r\n        \"name\": \"Apple EOS R5\",\r\n        \"brand\": \"Apple\",\r\n        \"productModel\": \"EOS R5\",\r\n        \"category\": \"Camera\",\r\n        \"color\": \"Rose Gold\",\r\n        \"price\": 1349.31,\r\n        \"currency\": \"USD\",\r\n        \"stock\": 64\r\n      }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{HOST}}:{{PORT}}/products?limit=5&skip=5&createdAt=2024-01-01",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "skip",
+							"value": "5"
+						},
+						{
+							"key": "createdAt",
+							"value": "2024-01-01"
+						},
+						{
+							"key": "updatedAt",
+							"value": "2025-01-01",
+							"disabled": true
+						},
+						{
+							"key": "sku",
+							"value": "Product SKU",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "ProductName",
+							"disabled": true
+						},
+						{
+							"key": "brand",
+							"value": "ProductBrand",
+							"disabled": true
+						},
+						{
+							"key": "productModel",
+							"value": "ProductModel",
+							"disabled": true
+						},
+						{
+							"key": "currency",
+							"value": "USD",
+							"disabled": true
+						},
+						{
+							"key": "category",
+							"value": "Product Category",
+							"disabled": true
+						},
+						{
+							"key": "color",
+							"value": "Product Color",
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "100",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "isDeleted",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET - Fetch Products",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{HOST}}:{{PORT}}/products?limit=5&skip=5&createdAt=2024-01-01",
+							"protocol": "http",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "skip",
+									"value": "5"
+								},
+								{
+									"key": "createdAt",
+									"value": "2024-01-01"
+								},
+								{
+									"key": "updatedAt",
+									"value": "2025-01-01",
+									"disabled": true
+								},
+								{
+									"key": "sku",
+									"value": "Product SKU",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "ProductName",
+									"disabled": true
+								},
+								{
+									"key": "brand",
+									"value": "ProductBrand",
+									"disabled": true
+								},
+								{
+									"key": "productModel",
+									"value": "ProductModel",
+									"disabled": true
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Product Category",
+									"disabled": true
+								},
+								{
+									"key": "color",
+									"value": "Product Color",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "100",
+									"disabled": true
+								},
+								{
+									"key": "stock",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "isDeleted",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1767"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6e7-28OwZv4BZQZSogZz7+nb+tZ6Kwc\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Jan 2025 19:18:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"_id\": \"678ba468a15d6e105c5e5166\",\n            \"sysId\": \"7pXVKSC5tswcsYKl2NIzRG\",\n            \"createdAt\": \"2024-01-23T21:47:06.955Z\",\n            \"updatedAt\": \"2024-01-23T21:47:06.955Z\",\n            \"sku\": \"NB99GBQQ\",\n            \"name\": \"Dell Watch Series 7\",\n            \"brand\": \"Dell\",\n            \"productModel\": \"Watch Series 7\",\n            \"currency\": \"USD\",\n            \"category\": \"Smartwatch\",\n            \"color\": \"Silver\",\n            \"price\": 1560.25,\n            \"stock\": 197,\n            \"isDeleted\": false,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"678ba468a15d6e105c5e5168\",\n            \"sysId\": \"2AQxX92m191z9YpXa4E6fc\",\n            \"createdAt\": \"2024-01-23T21:47:06.921Z\",\n            \"updatedAt\": \"2024-01-23T21:47:06.921Z\",\n            \"sku\": \"266JZZZ8\",\n            \"name\": \"Sony Moto G7\",\n            \"brand\": \"Sony\",\n            \"productModel\": \"Moto G7\",\n            \"currency\": \"USD\",\n            \"category\": \"Smartphone\",\n            \"color\": \"White\",\n            \"price\": 1786.34,\n            \"stock\": 132,\n            \"isDeleted\": false,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"678ba468a15d6e105c5e516a\",\n            \"sysId\": \"5PbFWSZJ79DGrmFthjM6Tg\",\n            \"createdAt\": \"2024-01-23T21:47:06.882Z\",\n            \"updatedAt\": \"2025-01-15T21:47:06.882Z\",\n            \"sku\": \"7C6KTQ2L\",\n            \"name\": \"Panasonic HD 450BT\",\n            \"brand\": \"Panasonic\",\n            \"productModel\": \"HD 450BT\",\n            \"currency\": \"USD\",\n            \"category\": \"Headphones\",\n            \"color\": \"Red\",\n            \"price\": 884.42,\n            \"stock\": 169,\n            \"isDeleted\": false,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"678ba468a15d6e105c5e516c\",\n            \"sysId\": \"3exMuAwtfeOFlcBUDVGgx2\",\n            \"createdAt\": \"2024-01-23T21:47:06.847Z\",\n            \"updatedAt\": \"2024-01-23T21:47:06.847Z\",\n            \"sku\": \"74FAVSQ0\",\n            \"name\": \"Samsung QuietComfort 35\",\n            \"brand\": \"Samsung\",\n            \"productModel\": \"QuietComfort 35\",\n            \"currency\": \"USD\",\n            \"category\": \"Headphones\",\n            \"color\": \"Silver\",\n            \"price\": 1184.41,\n            \"stock\": 123,\n            \"isDeleted\": false,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"678ba468a15d6e105c5e516e\",\n            \"sysId\": \"5uijT8jCAzh0WVqSXkMBAg\",\n            \"createdAt\": \"2024-01-23T21:47:06.563Z\",\n            \"updatedAt\": \"2025-01-04T21:47:06.563Z\",\n            \"sku\": \"LOOH7DGL\",\n            \"name\": \"Lenovo Mi Watch\",\n            \"brand\": \"Lenovo\",\n            \"productModel\": \"Mi Watch\",\n            \"currency\": \"USD\",\n            \"category\": \"Smartwatch\",\n            \"color\": \"Silver\",\n            \"price\": 0,\n            \"stock\": 54,\n            \"isDeleted\": false,\n            \"__v\": 0\n        }\n    ],\n    \"total\": 89,\n    \"limit\": 5,\n    \"skip\": 5\n}"
+				}
+			]
+		},
+		{
+			"name": "DELETE- Delete Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{HOST}}:{{PORT}}/products/{{SKU}}",
+					"protocol": "http",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"products",
+						"{{SKU}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "DELETE - Delete Product Response Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{HOST}}:{{PORT}}/products/{{SKU}}",
+							"protocol": "http",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"products",
+								"{{SKU}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "51"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"33-I67gUAQ1fNeakBG3TUsZJxCFn9k\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Jan 2025 19:17:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"The product was deleted successfully.\"\n}"
+				}
+			]
+		}
+	]
+}

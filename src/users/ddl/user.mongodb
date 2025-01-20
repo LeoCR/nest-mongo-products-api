@@ -1,0 +1,36 @@
+use('product_entries_db');
+
+// db.users.drop();
+
+db.createCollection('users', {
+  validator: {
+    $jsonSchema: {
+      bsonType: 'object',
+      required: ['username', 'email', 'password'],
+      properties: {
+        password: {
+          bsonType: 'string',
+          description: 'The Password of the User',
+        },
+        email: {
+          bsonType: 'string',
+          description: 'The email of the user',
+        },
+        username: {
+          bsonType: 'string',
+          description: 'The username of the user',
+        },
+        createdAt: {
+          bsonType: 'date',
+          description: 'Date of creation',
+        },
+        updatedAt: {
+          bsonType: 'date',
+          description: 'Date of last update',
+        },
+      },
+    },
+  },
+});
+
+db.users.createIndex({ email: 1 }, { unique: true });

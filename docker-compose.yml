@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo:8.0
+    container_name: product-entries-db-container
+    env_file: .env
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    command: mongod --port ${DB_PORT}
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - product-entries-network
+  app:
+    image: product-entries-api
+    env_file: .env
+    depends_on:
+      - mongodb
+    build: .
+    restart: always
+    container_name: product-entries-app-container
+    environment:
+      DB_HOST: mongodb
+    links:
+      - 'mongodb:database'
+    command: npm run start:dev
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - product-entries-network
+volumes:
+  mongo_data:
+networks:
+  product-entries-network:
+    driver: bridge
